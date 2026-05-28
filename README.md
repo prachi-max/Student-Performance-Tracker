@@ -5,6 +5,7 @@
 * About The Project
 * Features
 * Built With
+* Project Structure
 * Getting Started
 * Installation
 * Prerequisites
@@ -46,18 +47,62 @@ This project combines Web Development, Machine Learning, Data Visualization, and
 
 The project is developed using the following technologies:
 
-* Python
-* Flask
-* Machine Learning
-* Scikit-learn
+## Frontend
+
+* Angular
+* TypeScript
 * HTML5
 * CSS3
-* JavaScript
 * Chart.js
-* SQLite / MongoDB
+* Angular Material
+
+## Backend
+
+* Node.js
+* Express.js
+* MongoDB / MySQL
+* REST API
+
+## AI & Machine Learning
+
+* Python
+* Scikit-learn
+* Machine Learning
 * Speech Recognition
 * Text-to-Speech (TTS)
 * Artificial Intelligence
+
+---
+
+# Project Structure
+
+```bash id="m2x9qk"
+AI-Student-Performance-Task-Management-System/
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── middleware/
+│   ├── database/
+│   └── ml_models/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── assets/
+│   │   ├── environments/
+│   │   └── styles/
+│   │
+│   ├── angular.json
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── README.md
+└── LICENSE
+```
 
 ---
 
@@ -71,38 +116,70 @@ To get a local copy up and running, follow these steps.
 
 Clone the repository:
 
-```bash id="6q7vgh"
-git clone https://github.com/your-username/AI-Student-Performance-Task-Management-System.git
+```bash id="0m1vya"
+git clone https://github.com/prachi-max/Student-Performance-Tracker.git
 ```
 
 Move to the project directory:
 
-```bash id="xfr6yb"
-cd AI-Student-Performance-Task-Management-System
+```bash id="p9z4yr"
+cd Student-Performance-Tracker
 ```
 
-Install required dependencies:
+---
 
-```bash id="6v1nxy"
-pip install flask
-pip install pandas
-pip install numpy
-pip install matplotlib
-pip install scikit-learn
-pip install speechrecognition
-pip install pyttsx3
+# Backend Setup
+
+Move into backend folder:
+
+```bash id="x5e7sn"
+cd backend
 ```
 
-Run the Flask application:
+Install backend dependencies:
 
-```bash id="x0r6rb"
-python app.py
+```bash id="q0mz44"
+npm install
 ```
 
-Open your browser and visit:
+Run backend server:
 
-```bash id="8mk8mv"
-http://127.0.0.1:5000
+```bash id="g1z2m4"
+node server.js
+```
+
+Or using nodemon:
+
+```bash id="2v9e8f"
+npx nodemon server.js
+```
+
+---
+
+# Frontend Setup
+
+Move into frontend folder:
+
+```bash id="t9m0wx"
+cd frontend
+```
+
+Install Angular dependencies:
+
+```bash id="r6b3xy"
+npm install
+```
+
+Run Angular application:
+
+```bash id="v4n8pd"
+ng serve
+```
+
+Open browser:
+
+```bash id="j3e0ft"
+http://localhost:4200
 ```
 
 ---
@@ -111,16 +188,24 @@ http://127.0.0.1:5000
 
 Your system should meet the following requirements:
 
+* Node.js installed
+* Angular CLI installed
 * Python 3.8 or above
 * Windows / Linux / macOS
 * Minimum 4GB RAM recommended
-* Internet connection for additional AI integrations
+
+Install Angular CLI:
+
+```bash id="k9e4aw"
+npm install -g @angular/cli
+```
 
 Basic knowledge of:
 
-* Python
-* Flask
+* Angular
+* Node.js
 * Machine Learning
+* REST APIs
 * HTML/CSS/JavaScript
 
 ---
@@ -186,27 +271,26 @@ Contributions are what make the open-source community such an amazing place to l
 Any contributions you make are greatly appreciated.
 
 1. Fork the Project
+
 2. Create your Feature Branch
 
-```bash id="p2ps87"
+```bash id="t8m5sv"
 git checkout -b feature/AmazingFeature
 ```
 
 3. Commit your Changes
 
-```bash id="p3g1zw"
+```bash id="u2v4qx"
 git commit -m 'Add some AmazingFeature'
 ```
 
 4. Push to the Branch
 
-```bash id="z2b27r"
+```bash id="d7n9pr"
 git push origin feature/AmazingFeature
 ```
 
 5. Open a Pull Request
-
--
 
 ---
 

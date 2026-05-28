@@ -73,7 +73,15 @@ The project is developed using the following technologies:
 * Artificial Intelligence
 
 ---
-
+# Screenshots 
+## Home_Page
+<p align="center"> <img src="assets/home_page.png" width="900"/> </p>
+## Dashboard
+<p align="center"> <img src="assets/DashBoard.png" width="900"/> </p> ---
+## Student Progress
+<p align="center"> <img src="images/progress.png" width="900"/> </p> --- 
+## Students Task Page 
+<p align="center"> <img src="images/recommendation.png" width="900"/> </p>
 # Project Structure
 
 ```bash id="m2x9qk"

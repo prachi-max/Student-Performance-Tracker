@@ -75,13 +75,13 @@ The project is developed using the following technologies:
 ---
 # Screenshots 
 ## Home_Page
-<p align="center"> <img src="assets/home_page.png" width="900"/> </p>
+<p align="center"> <img src="assets/home_page.png" width="900"> </p>
 ## Dashboard
-<p align="center"> <img src="assets/DashBoard.png" width="900"/> </p> ---
+<p align="center"> <img src="assets/DashBoard.png" width="900"> </p> ---
 ## Student Progress
-<p align="center"> <img src="assets/progress.png" width="900"/> </p> --- 
+<p align="center"> <img src="assets/progress.png" width="900"> </p> --- 
 ## Students Task Page 
-<p align="center"> <img src="assets/recommendation.png" width="900"/> </p>
+<p align="center"> <img src="assets/recommendation.png" width="900"> </p>
 
 # Project Structure
 

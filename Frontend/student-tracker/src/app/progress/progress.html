@@ -1,0 +1,815 @@
+<!-- <div class="dashboard">
+
+  <h1>📊 Student Dashboard</h1>
+
+
+<div class="dashboard-grid">
+
+  
+  <div class="left-cards">
+
+    <div class="card blue">
+      <h2>{{total}}</h2>
+      <p>Total Tasks</p>
+    </div>
+
+    <div class="card green">
+      <h2>{{completed}}</h2>
+      <p>Completed</p>
+    </div>
+
+    <div class="card orange">
+      <h2>{{pending}}</h2>
+      <p>Pending</p>
+    </div>
+
+    <div class="card purple">
+      <h2>{{percentage}}%</h2>
+      <p>Progress</p>
+    </div>
+
+  </div>
+
+  RIGHT SIDE (GRAPH)
+  <div class="graph-section">
+    <canvas id="progressChart"></canvas>
+  </div>
+
+</div>
+
+  PROGRESS BAR -->
+  <!-- <div class="progress-container">
+    <div class="progress-fill" [style.width.%]="percentage"></div>
+  </div> -->
+
+  <!-- TABLE 
+  <table class="task-table">
+
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Title</th>
+        <th>Difficulty</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let task of tasks">
+
+        <td>{{task.subject}}</td>
+        <td>{{task.title}}</td>
+        <td>{{task.difficulty}}</td>
+        <td>{{task.deadline | date}}</td>
+
+        <td>
+          <span [ngClass]="task.status">
+            {{task.status}}
+          </span>
+        </td>
+
+        <td>
+          <button (click)="markComplete(task)">✔</button>
+          <button (click)="deleteTask(task._id)">🗑</button>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+<div class="stat-card prediction-card">
+
+    <h2>
+        {{ predictedPerformance | number:'1.0-0' }}%
+    </h2>
+
+    <p>Predicted Performance</p>
+
+</div> -->
+
+
+
+
+<!-- 
+new wala -->
+
+<div class="dashboard-container">
+
+  <div class="sidebar">
+
+    <div>
+      <div class="logo-section">
+        <div class="logo-icon"></div>
+        <h2>Student Panel</h2>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-circle">  {{ userInitial }}</div>
+
+        <h3>{{ userName }}</h3>
+
+        <p>{{ userEmail }}</p>
+      </div>
+
+      <div class="menu-list">
+
+        <div class="menu-item active-menu">
+          Dashboard
+        </div>
+
+        <div class="menu-item">
+           My Tasks
+        </div>
+
+        <div class="menu-item"
+                (click)="toggleCalendar()">
+          📅 Calendar
+        </div>
+
+        <div
+  class="menu-item"
+  (click)="toggleProgressPopup()"
+>📈 Progress
+</div>
+
+      </div>
+    </div>
+
+
+    <!-- VOICE ASSISTANT -->
+    <div class="voice-box">
+
+      <div
+  class="voice-circle"
+  [class.speaking]="isSpeaking"
+>
+  🎤
+</div>
+
+      <h3>Voice Assistant</h3>
+
+      <p>Tap to speak</p>
+
+    </div>
+
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOP HEADER -->
+    <div class="top-header">
+
+      <div>
+        <h1>
+          Hello,
+          {{userName }} 👋
+        </h1><br>
+           
+        <p>
+          {{ today | date:'dd MMMM yyyy' }}
+        </p>
+      </div>
+<div class="top-mini-cards">
+
+  <!-- STREAK -->
+
+  <div class="mini-card">
+
+    <div class="mini-icon">
+      🔥
+    </div>
+
+    <div>
+
+      <h4>Current Streak</h4>
+
+      <h2>
+        {{ currentStreak }} Days
+      </h2>
+
+    </div>
+
+  </div>
+
+  <!-- FOCUS -->
+
+  <div class="mini-card">
+
+    <div class="mini-icon">
+      ⚡
+    </div>
+
+    <div>
+
+      <h4>Today's Focus</h4>
+
+      <h2>
+        {{ percentage }}%
+      </h2>
+
+    </div>
+
+  </div>
+
+  <!-- AI STATUS -->
+
+  <div class="mini-card">
+
+    <div class="mini-icon">
+      🧠
+    </div>
+
+    <div>
+
+      <h4>AI Status</h4>
+
+      <h2>Active</h2>
+
+    </div>
+
+  </div>
+
+</div>
+      <div class="header-buttons">
+
+     <button
+      class="add-btn"
+     routerLink="/add-task">+ Add New Task</button>
+
+      </div>
+
+    </div>
+
+    <!-- STATS CARDS -->
+   
+<div class="stats-grid">
+
+  <!-- TOTAL TASKS -->
+
+  <div class="stat-card total-card">
+
+    <div class="card-top">
+
+      <div>
+        <h3>Total Tasks</h3>
+
+        <h1>{{ total }}</h1>
+
+        <p>+{{ total }} this week</p>
+      </div>
+
+      <div class="card-icon">
+        📋
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- COMPLETED -->
+
+  <div class="stat-card completed-card">
+
+    <div class="card-top">
+
+      <div>
+        <h3>Completed</h3>
+
+        <h1>{{ completed }}</h1>
+
+        <p>{{ percentage }}% of total</p>
+      </div>
+
+      <div class="card-icon">
+        ✅
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PENDING -->
+
+  <div class="stat-card pending-card">
+
+    <div class="card-top">
+
+      <div>
+        <h3>Pending</h3>
+
+        <h1>{{ pending }}</h1>
+
+        <p>{{ pending }} remaining</p>
+      </div>
+
+      <div class="card-icon">
+        ⏳
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PROGRESS -->
+
+  <div class="stat-card progress-card">
+
+    <div class="card-top">
+
+      <div>
+        <h3>Progress</h3>
+
+        <h1>{{ percentage }}%</h1>
+
+        <p>Keep going! 💪</p>
+      </div>
+
+      <!-- CIRCLE -->
+
+      <div
+        class="mini-progress-ring"
+        [style.background]="
+          'conic-gradient(#ffffff ' +
+          percentage +
+          '%, rgba(255,255,255,0.2) 0%)'
+        "
+      >
+
+        <div class="mini-inner-ring"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+    <!-- SUMMARY SECTION -->
+    <div class="summary-wrapper">
+
+<!-- SUBJECT PERFORMANCE -->
+
+<div class="subject-performance-card">
+
+  <h2>
+    🧠 Subject Performance
+  </h2>
+
+  <!-- STRONGEST -->
+
+  <div class="subject-label strong-text">
+
+     Strongest Subject
+
+  </div>
+
+  <div class="subject-row">
+
+    <span class="subject-name">
+
+      {{ topSubject?.subject }}
+
+    </span>
+
+    <div class="progress-bar">
+
+      <div
+        class="progress-fill strong-fill"
+
+        [style.width.%]="
+          topSubject?.performance || 0
+        "
+      >
+      </div>
+
+    </div>
+
+    <span class="subject-percent">
+
+      {{ topSubject?.performance || 0 }}%
+
+    </span>
+
+  </div>
+
+  <!-- AVERAGE -->
+
+  <div class="subject-label average-text">
+
+     Average Subject
+
+  </div>
+
+  <div class="subject-row">
+
+    <span class="subject-name">
+
+      {{ averageSubject?.subject }}
+
+    </span>
+
+    <div class="progress-bar">
+
+      <div
+        class="progress-fill average-fill"
+
+        [style.width.%]="
+          averageSubject?.performance || 0
+        "
+      >
+      </div>
+
+    </div>
+
+    <span class="subject-percent">
+
+      {{ averageSubject?.performance || 0 }}%
+
+    </span>
+
+  </div>
+
+  <!-- WEAKEST -->
+
+  <div class="subject-label weak-text">
+
+     Weakest Subject
+
+  </div>
+
+  <div class="subject-row">
+
+    <span class="subject-name">
+
+      {{ weakSubject?.subject }}
+
+    </span>
+
+    <div class="progress-bar">
+
+      <div
+        class="progress-fill weak-fill"
+
+        [style.width.%]="
+          weakSubject?.performance || 0
+        "
+      >
+      </div>
+
+    </div>
+
+    <span class="subject-percent">
+
+      {{ weakSubject?.performance || 0 }}%
+
+    </span>
+
+  </div>
+
+</div>
+
+      <!-- UPCOMING TASKS -->
+      <!-- AI TASKS -->
+
+<div class="ai-task-section">
+
+  <div class="section-header">
+
+    <h1>
+      🧠 AI Suggested Tasks
+    </h1>
+
+  </div>
+
+  <div
+    class="ai-task-card"
+
+    *ngFor="
+      let task of aiRecommendations
+    "
+  >
+
+    <div>
+
+      <h2>
+
+        {{ task.recommendation }}
+
+      </h2>
+
+      <p>
+
+        {{ task.subject }}
+
+      </p>
+
+    </div>
+
+    <span class="task-badge">
+
+      AI Suggested
+
+    </span>
+
+  </div>
+
+</div>
+
+    
+
+  </div>
+<!-- AI PROGRESS POPUP -->
+
+<div
+  class="progress-overlay"
+  *ngIf="showProgressPopup"
+>
+
+  <div class="ai-popup">
+
+    <!-- HEADER -->
+
+    <div class="popup-header">
+
+      <h1>📈 AI Progress Report</h1>
+
+      <button 
+        class="close-btn"
+        (click)="toggleProgressPopup()"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <!-- TOP -->
+
+    <div class="top-section">
+
+      <!-- CIRCLE -->
+
+      <div
+        class="progress-ring"
+        [style.background]="
+          'conic-gradient(#4fffe0 ' +
+          predictedPerformance +
+          '%, #4c1d95 0%)'
+        "
+      >
+
+        <div class="inner-ring">
+
+          <h1>
+            {{ predictedPerformance }}%
+          </h1><br>
+           
+          <p>Productive</p>
+
+        </div>
+
+      </div>
+
+      <!-- TEXT -->
+
+      <div class="performance-text">
+
+        <h2>Overall Performance</h2>
+
+        <h3>
+          {{ getPerformanceStatus() }}
+        </h3>
+
+        <p>
+          You are improving steadily
+          based on your task activity.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats-grid-popup">
+
+      <div class="popup-card green">
+        <h2>{{ completedTasks }}</h2>
+        <p>Completed</p>
+      </div>
+
+      <div class="popup-card orange">
+        <h2>{{ pendingTasks }}</h2>
+        <p>Pending</p>
+      </div>
+
+      <div class="popup-card purple">
+        <h2>{{ total }}</h2>
+        <p>Total Tasks</p>
+      </div>
+
+      <div class="popup-card blue">
+        <h2>{{ percentage }}%</h2>
+        <p>Completion</p>
+      </div>
+
+    </div>
+
+    <!-- SUGGESTIONS -->
+
+    <div class="suggestion-list">
+
+  <div
+    class="suggestion-item"
+    *ngFor="
+      let item of getSuggestions()
+    "
+  >
+
+    ✔ {{ item }}
+
+  </div>
+
+</div>
+
+    <!-- MOTIVATION -->
+
+    <div class="motivation-card">
+
+      🏆 {{ getMotivation() }}
+
+    </div>
+
+  </div>
+
+</div>
+<!-- MY TASKS -->
+
+<div class="table-card">
+
+  <div class="table-header">
+
+  <h2>My Tasks</h2>
+  <div class="task-filters">
+
+    <!-- ALL -->
+
+    <button
+      class="filter-btn active-filter"
+    >
+      All
+    </button>
+
+    <!-- PENDING -->
+
+    <button
+      class="filter-btn"
+    >
+      Pending
+    </button>
+
+    <!-- COMPLETED -->
+
+    <button
+      class="filter-btn"
+    >
+      Completed
+    </button>
+
+  </div>
+  </div>
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>Title</th>
+        <th>Subject</th>
+        <th>Difficulty</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+     <tr *ngFor="let task of getPaginatedTasks()">
+
+        <td>{{ task.title }}</td>
+
+        <td>{{ task.subject }}</td>
+
+        <td>
+
+          <span
+            class="difficulty"
+            [ngClass]="{
+              'easy': task.difficulty === 'Easy',
+              'medium': task.difficulty === 'Medium',
+              'hard': task.difficulty === 'Hard'
+            }"
+          >
+            {{ task.difficulty }}
+          </span>
+
+        </td>
+
+        <td>
+          {{ task.deadline | date:'dd MMM yyyy' }}
+        </td>
+
+        <td>
+
+          <span
+            class="status"
+            [ngClass]="{
+              'completed-status':
+                task.status === 'Completed',
+
+              'pending-status':
+                task.status === 'Pending'
+            }"
+          >
+            {{ task.status }}
+          </span>
+
+        </td>
+
+        <td>
+
+          <button
+            class="edit-btn"
+            *ngIf="task.status === 'Pending'"
+            (click)="markComplete(task)"
+          >
+            ✔
+          </button>
+
+          <button
+            class="delete-btn"
+            (click)="deleteTask(task._id)"
+          >
+            🗑
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+  <div class="task-pagination">
+
+  <!-- LEFT -->
+
+  <button
+    class="arrow-btn"
+    (click)="previousTasks()"
+  >
+    ❮
+  </button>
+
+  <!-- INFO -->
+
+  <div class="pagination-info">
+
+    Showing
+
+    {{
+      currentPage * tasksPerPage + 1
+    }}
+
+    -
+
+   {{ getEndIndex() }}
+    of {{ tasks.length }} tasks
+
+  </div>
+
+  <!-- RIGHT -->
+
+  <button
+    class="arrow-btn"
+    (click)="nextTasks()"
+  >
+    ❯
+  </button>
+
+</div>
+
+</div>
+</div>
+

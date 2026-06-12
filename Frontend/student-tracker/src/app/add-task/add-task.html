@@ -1,0 +1,102 @@
+<div class="card">
+
+    <div class="header">
+        <div class="header-icon">+</div>
+
+        <div class="header-text">
+            <h2>Add Study Task</h2>
+            <p>Plan your learning effectively</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+
+        <div class="grid">
+
+            <!-- SUBJECT -->
+            <div>
+
+                <label>Subject</label>
+                 <input
+                  type="text"
+                  placeholder="e.g. Add Subject " [(ngModel)]="task.subject"></div>
+
+            <!-- TITLE -->
+            <div>
+
+                <label>Task Title</label>
+
+                <input
+                  type="text"
+                  placeholder="e.g. Lab Practice "
+                  [(ngModel)]="task.title"
+                >
+
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="full">
+
+                <label>Description</label>
+
+                <textarea
+                  placeholder="What exactly do you need to do?"
+                  [(ngModel)]="task.description"
+                ></textarea>
+
+            </div>
+
+            <!-- DIFFICULTY -->
+            <div>
+
+                <label>Difficulty</label>
+
+                <select [(ngModel)]="task.difficulty">
+
+                    <option value="">
+                      Select Difficulty
+                    </option>
+
+                    <option value="Easy">Easy</option>
+
+                    <option value="Medium">Medium</option>
+
+                    <option value="Hard">Hard</option>
+
+                </select>
+
+            </div>
+
+            <!-- DEADLINE -->
+            <div>
+
+                <label>Deadline</label>
+
+                <input
+                  type="date"
+                  [(ngModel)]="task.deadline"
+                >
+
+                <div class="hint">
+                  When do you want to complete this?
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BUTTON -->
+    <div class="button-container">
+
+        <button
+          class="btn"
+          (click)="addTask()"
+        >
+          Add Task
+        </button>
+
+    </div>
+
+</div>

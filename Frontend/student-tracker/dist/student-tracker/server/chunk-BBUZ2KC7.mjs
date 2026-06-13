@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{f as o}from"./chunk-574PEUI3.mjs";import{L as e,P as i}from"./chunk-RBEGH3OM.mjs";var p=class t{constructor(r){this.http=r}apiUrl="http://127.0.0.1:5001/predict-performance";getPrediction(r){return this.http.get(`http://127.0.0.1:5001/predict-performance/${r}`)}static \u0275fac=function(n){return new(n||t)(i(o))};static \u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"})};export{p as a};

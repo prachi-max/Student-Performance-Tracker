@@ -95,6 +95,11 @@ login() {
 
 }
 
-
+fillDemo() {
+  this.loginForm.patchValue({
+    email: 'demo@studenttracker.com',
+    password: 'Demo@123'
+  });
+}
 }
 

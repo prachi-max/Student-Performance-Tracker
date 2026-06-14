@@ -10,19 +10,22 @@ recommendation_bp = Blueprint(
     '/api/recommend-tasks',
     methods=['GET']
 )
-
 def recommend_tasks():
 
-    result = subprocess.check_output(
+    try:
 
-        ['python',
-        'ml/predict/predict_recommendation.py']
+        result = subprocess.check_output(
+            ['python',
+             'ml/predict/predict_recommendation.py'],
+            stderr=subprocess.STDOUT
+        )
 
-    )
+        return jsonify({
+            "result": result.decode('utf-8')
+        })
 
-    return jsonify({
+    except Exception as e:
 
-        "result":
-        result.decode('utf-8')
-
-    })
+        return jsonify({
+            "error": str(e)
+        }), 500

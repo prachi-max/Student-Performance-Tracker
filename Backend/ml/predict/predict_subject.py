@@ -3,7 +3,7 @@ import joblib
 from pymongo import MongoClient
 from collections import defaultdict
 import json
-
+import os
 # LOAD MODEL
 
 model = joblib.load(
@@ -25,7 +25,7 @@ status_encoder = joblib.load(
 # CONNECT MONGODB
 
 client = MongoClient(
-    "mongodb://localhost:27017/"
+    os.environ["MONGO_URI"]
 )
 
 db = client["studenttracker"]

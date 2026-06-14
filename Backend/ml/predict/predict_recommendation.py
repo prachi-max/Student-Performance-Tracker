@@ -2,7 +2,7 @@ import pandas as pd
 import joblib
 from pymongo import MongoClient
 import json
-
+import os
 # LOAD MODEL
 
 model = joblib.load(
@@ -28,7 +28,7 @@ output_encoder = joblib.load(
 # MONGODB
 
 client = MongoClient(
-    "mongodb://localhost:27017/"
+    os.environ["MONGO_URI"]
 )
 
 db = client["studenttracker"]

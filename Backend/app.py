@@ -3,7 +3,7 @@ from flask_cors import CORS
 from pymongo import MongoClient
 from routes.recommendation_routes import recommendation_bp
 from routes.prediction_routes import prediction_bp
-
+import os
 app = Flask(__name__)
 
 # ENABLE CORS
@@ -56,9 +56,13 @@ def add_task():
 
 # RUN APP
 
+
+
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5001))
 
     app.run(
-        debug=True,
-        port=5001
+        host="0.0.0.0",
+        port=port,
+        debug=False
     )

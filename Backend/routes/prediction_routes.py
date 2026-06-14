@@ -1,6 +1,8 @@
+import os
+
 from flask import Blueprint, jsonify
 from pymongo import MongoClient
-
+from db import db
 prediction_bp = Blueprint(
     'prediction',
     __name__
@@ -14,15 +16,15 @@ prediction_bp = Blueprint(
 def predict_performance(user_id):
 
     client = MongoClient(
-        "mongodb://localhost:27017/"
+        os.environ["MONGO_URI"]
     )
 
     db = client["studenttracker"]
 
     tasks = list(
-        db["tasks"].find({
-            "userId": user_id
-        })
+    db["tasks"].find({
+        "userId": user_id
+    })
     )
 
     completed_tasks = len([

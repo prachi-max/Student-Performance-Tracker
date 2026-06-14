@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from routes.recommendation_routes import recommendation_bp
 from routes.prediction_routes import prediction_bp
 import os
+from pymongo import MongoClient
 app = Flask(__name__)
 
 # ENABLE CORS
@@ -17,7 +18,7 @@ app.register_blueprint(prediction_bp)
 # MONGODB CONNECTION
 
 client = MongoClient(
-    "mongodb://localhost:27017/"
+    os.environ["MONGO_URI"]
 )
 
 db = client["studenttracker"]

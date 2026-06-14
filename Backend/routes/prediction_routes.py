@@ -26,6 +26,9 @@ def predict_performance(user_id):
         "userId": user_id
     })
     )
+    print("USER_ID RECEIVED:", user_id)
+    print("TASKS FOUND:", len(tasks))
+    print(tasks)
 
     completed_tasks = len([
         t for t in tasks

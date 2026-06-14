@@ -47,7 +47,7 @@ getAIRecommendations() {
 
   return this.http.get(
 
-    'https://student-performance-tracker-h2et.onrender.com/api/recommend-tasks'
+    'https://student-performance-tracker-1-qmtm.onrender.com/api/recommend-tasks'
 
   );
 

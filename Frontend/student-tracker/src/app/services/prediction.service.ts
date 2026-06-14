@@ -7,17 +7,16 @@ import { HttpClient } from '@angular/common/http';
 
 export class PredictionService {
 
-  apiUrl = 'http://127.0.0.1:5001/predict-performance';
+  apiUrl = 'https://student-performance-tracker-1-qmtm.onrender.com';
+
 
   constructor(private http: HttpClient) {}
 
 getPrediction(userId: string) {
 
-  return this.http.get(
-
-    `http://127.0.0.1:5001/predict-performance/${userId}`
-
-  );
+ return this.http.get(
+  `${this.apiUrl}/predict-performance/${userId}`
+);
 
 }
 }

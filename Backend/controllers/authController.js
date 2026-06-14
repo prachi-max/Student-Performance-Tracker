@@ -68,52 +68,56 @@ exports.register = async (req, res) => {
   }
 };
 
-// ================= LOGIN =================
+
+
 exports.login = async (req, res) => {
   try {
-    console.log("LOGIN BODY:", req.body);
-
     const { email, password } = req.body;
 
-    // 🔍 find user
+    console.log("EMAIL RECEIVED:", email);
+
     const user = await User.findOne({ email });
 
+    console.log("USER FOUND:", user);
+
     if (!user) {
-      return res.status(400).json({ message: "User not found" });
+      return res.status(400).json({
+        message: "User not found"
+      });
     }
 
-    // 🔐 compare password
-    const valid = await bcrypt.compare(password, user.password);
+    const valid = await bcrypt.compare(
+      password,
+      user.password
+    );
+
+    console.log("PASSWORD MATCH:", valid);
 
     if (!valid) {
-      return res.status(400).json({ message: "Invalid password" });
+      return res.status(400).json({
+        message: "Invalid password"
+      });
     }
 
-    // 🔑 generate token
     const token = jwt.sign(
       { id: user._id },
-      "secretkey", // 👉 simple for now
+      "secretkey",
       { expiresIn: "1d" }
     );
 
-   res.json({
-
-  token,
-
-  user: {
-
-    _id: user._id,
-
-    name: user.name,
-
-    email: user.email
-
-  }
-
-});
+    res.json({
+      token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email
+      }
+    });
 
   } catch (error) {
-    console.log("LOGIN ERROR:", error); // 🔥 THIS WILL SHOW REAL ISSUE
-    res.status(500).json({ message: "Login error" });
+    console.log("LOGIN ERROR:", error);
+    res.status(500).json({
+      message: "Login error"
+    });
   }
 };

@@ -422,43 +422,6 @@ this.cdr.detectChanges();
 
 }
 
-  ngAfterViewInit() {
-    this.loadChart();
-  }
-
-  loadChart() {
-
-    // destroy old chart (important for refresh)
-    if (this.chart) {
-      this.chart.destroy();
-    }
-
-    this.chart = new Chart("progressChart", {
-      type: 'bar',
-      data: {
-        labels: ['Total', 'Completed', 'Pending'],
-        datasets: [{
-          label: 'Tasks',
-          data: [this.total, this.completed, this.pending],
-          backgroundColor: [
-        '#4e73df', // Total (Blue)
-        '#1cc88a', // Completed (Green)
-        '#f6a21a'  // Pending (Orange)
-      ],
-
-      borderRadius: 8
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false
-          }
-        }
-      }
-    });
-  }
   loadTasks() {
 const userId = localStorage.getItem('userId');
 
@@ -477,10 +440,7 @@ this.taskService
 
     this.cdr.detectChanges();
 
-    // 🔥 IMPORTANT FIX
-    setTimeout(() => {
-      this.loadChart();
-    }, 100);
+    
   });
 }
 

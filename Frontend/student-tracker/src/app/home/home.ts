@@ -39,33 +39,40 @@ aiRecommendations:any[] = [];
   ) {}
 
   startTracking() {
-    if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('token');
 
-      if (token) {
-        this.router.navigate(['/add-task']);
-      } else {
-        this.router.navigate(['/login']);
-      }
-    }
+  if (!isPlatformBrowser(this.platformId)) {
+    return;
   }
+
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    this.router.navigate(['/add-task']);
+  } else {
+    this.router.navigate(['/login']);
+  }
+}
   
 ngOnInit() {
 
-  const userId =
-  localStorage.getItem('userId');
+  
+  // PRODUCTIVITY
+
+    if (!isPlatformBrowser(this.platformId)) {
+    return;
+  }
+
+  const userId = localStorage.getItem('userId');
 
   // PRODUCTIVITY
 
   this.predictionService
-  .getPrediction(userId!)
-  .subscribe((data:any)=>{
+    .getPrediction(userId!)
+    .subscribe((data:any)=>{
+      this.predictedPerformance =
+        data.predicted_performance;
+    });
 
-    this.predictedPerformance =
-
-      data.predicted_performance;
-
-  });
 
   // SUBJECT ANALYTICS
 

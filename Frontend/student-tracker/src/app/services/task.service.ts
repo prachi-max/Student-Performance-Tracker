@@ -6,20 +6,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TaskService {
 
-  apiUrl = "http://localhost:5000/api/tasks";
+  apiUrl = "https://student-performance-tracker-h2et.onrender.com/api/tasks";
 
   constructor(private http: HttpClient) {}
 
   addTask(taskData: any) {
   return this.http.post(
-    'http://localhost:5000/api/tasks',
-
-    taskData
+    'https://student-performance-tracker-h2et.onrender.com/api/tasks'
+,    taskData
   );
 }
 getTasks(userId: string) {
   return this.http.get(
-    `http://localhost:5000/api/tasks/${userId}`
+    `https://student-performance-tracker-h2et.onrender.com/api/tasks/${userId}`
   );
 }
 
@@ -33,14 +32,14 @@ deleteTask(id: string) {
 getStreak(userId:string) {
 
   return this.http.get(
-    `http://localhost:5000/api/tasks/streak/${userId}`
+    `https://student-performance-tracker-h2et.onrender.com/api/tasks/streak/${userId}`
   );
 
 }
 getSubjectPrediction() {
 
   return this.http.get(
-    'http://localhost:5000/api/predict/subject-performance'
+    'https://student-performance-tracker-h2et.onrender.com/api/predict/subject-performance'
   );
 
 }
@@ -48,7 +47,7 @@ getAIRecommendations() {
 
   return this.http.get(
 
-    'http://127.0.0.1:5001/api/recommend-tasks'
+    'https://student-performance-tracker-h2et.onrender.com/api/recommend-tasks'
 
   );
 

@@ -33,7 +33,10 @@ export class AuthService {
   isLoggedIn(){
     return !!localStorage.getItem("token");
   }
-  login(data: any) {
-  return this.http.post("http://localhost:5000/api/auth/login", data);
+login(data: any) {
+  return this.http.post(
+    "https://student-performance-tracker-h2et.onrender.com/api/auth/login",
+    data
+  );
 }
 }

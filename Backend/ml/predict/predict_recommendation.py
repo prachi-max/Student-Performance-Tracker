@@ -36,9 +36,10 @@ db = client["studenttracker"]
 tasks = list(
     db["tasks"].find()
 )
-
+print("TOTAL TASKS FOUND:", len(tasks))
 results = []
 
+ 
 for task in tasks:
 
     try:
@@ -55,9 +56,13 @@ for task in tasks:
             task['status']
         ])[0]
 
-    except:
-        continue
+    except Exception as e:
 
+        print("SKIPPED TASK:", task)
+        print("ERROR:", str(e))
+
+        continue
+    
     performance = 50
 
     pending_tasks = len([

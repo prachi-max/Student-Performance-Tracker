@@ -37,11 +37,9 @@ getStreak(userId:string) {
 
 }
 getSubjectPrediction() {
-
   return this.http.get(
-    'https://student-performance-tracker-h2et.onrender.com/api/predict/subject-performance'
+    'https://student-performance-tracker-1-qmtm.onrender.com/api/predict/subject-performance'
   );
-
 }
 getAIRecommendations() {
 

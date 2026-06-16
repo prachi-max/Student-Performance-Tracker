@@ -33,8 +33,10 @@ constructor(
   isLoading = false;
 loginSuccess = false;
 
+
 login() {
 
+  
   this.isLoading = true;
 
   this.authService
@@ -68,17 +70,12 @@ login() {
           localStorage.getItem('userId')
         );
 
-        this.isLoading = false;
-
-        this.loginSuccess = true;
-
-        // Redirect
-        setTimeout(() => {
-
-          this.router.navigate(['/']);
-
-        }, 1000);
-
+       this.isLoading = false;
+       this.loginSuccess = true;
+       alert('Login successful');
+       setTimeout(() => {
+       window.location.href = '/';
+     }, 1000);
       },
 
       error: (err) => {
@@ -101,5 +98,6 @@ fillDemo() {
     password: 'Demo@123'
   });
 }
+
 }
 

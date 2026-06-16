@@ -55,10 +55,20 @@ aiRecommendations:any[] = [];
   
 ngOnInit() {
 
-  
-  // PRODUCTIVITY
+  if (!isPlatformBrowser(this.platformId)) {
+    return;
+  }
 
-    if (!isPlatformBrowser(this.platformId)) {
+  const token = localStorage.getItem('token');
+
+  // USER NOT LOGGED IN
+
+  if (!token) {
+
+    alert('Please login first');
+
+    this.router.navigate(['/login']);
+
     return;
   }
 
@@ -68,79 +78,71 @@ ngOnInit() {
 
   this.predictionService
     .getPrediction(userId!)
-    .subscribe((data:any)=>{
+    .subscribe((data:any) => {
+
       this.predictedPerformance =
         data.predicted_performance;
-    });
 
+    });
 
   // SUBJECT ANALYTICS
 
   this.taskService
-  .getSubjectPrediction()
-  .subscribe((data:any)=>{
+    .getSubjectPrediction()
+    .subscribe((data:any) => {
 
-    
- const subjects =
+      const subjects =
 
-  typeof data.result === 'string'
+        typeof data.result === 'string'
+          ? JSON.parse(data.result)
+          : (data.result || data);
 
-    ? JSON.parse(data.result)
-
-    : (data.result || data);
-
-    subjects.sort(
-
-      (a:any,b:any)=>
-
-        b.performance -
-        a.performance
-
-    );
-
-    this.topSubject =
-      subjects[0];
-
-    this.weakSubject =
-      subjects[
-        subjects.length - 1
-      ];
-
-    const middleIndex =
-      Math.floor(
-        subjects.length / 2
+      subjects.sort(
+        (a:any,b:any) =>
+          b.performance -
+          a.performance
       );
 
-    this.averageSubject =
-      subjects[middleIndex];
-  setTimeout(() => {
+      this.topSubject =
+        subjects[0];
 
-  this.cdr.detectChanges();
+      this.weakSubject =
+        subjects[
+          subjects.length - 1
+        ];
 
-}, 0);
-  });
+      const middleIndex =
+        Math.floor(
+          subjects.length / 2
+        );
 
-  
-    // task suggestion
-this.taskService
-.getAIRecommendations()
-.subscribe((data:any)=>{
+      this.averageSubject =
+        subjects[middleIndex];
 
-  this.aiRecommendations =
+      setTimeout(() => {
 
-    typeof data.result === 'string'
+        this.cdr.detectChanges();
 
-      ? JSON.parse(data.result)
+      }, 0);
 
-      : data.result;
+    });
 
-  console.log(
-    this.aiRecommendations
-  );
+    
+  // AI RECOMMENDATIONS
 
-  this.cdr.detectChanges();
+  this.taskService
+    .getAIRecommendations()
+    .subscribe((data:any) => {
 
-});
+      this.aiRecommendations =
+
+        typeof data.result === 'string'
+          ? JSON.parse(data.result)
+          : data.result;
+
+      this.cdr.detectChanges();
+
+    });
 
 }
   goToArticles() {

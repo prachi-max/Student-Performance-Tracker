@@ -23,15 +23,15 @@ import {
   _getAnimationsState,
   defaultRippleAnimationConfig,
   hasModifierKey
-} from "./chunk-FS4XWM2Z.js";
-import "./chunk-EKCDK4V2.js";
-import "./chunk-PQ6M2ZGL.js";
-import "./chunk-SCXO2425.js";
+} from "./chunk-2DDQLM3N.js";
+import "./chunk-3A2P3NDL.js";
+import "./chunk-TCR4PFVR.js";
 import {
   BidiModule
-} from "./chunk-CWMALR73.js";
-import "./chunk-HPTJTWTS.js";
-import "./chunk-4BF3KDZT.js";
+} from "./chunk-LGV5MQHY.js";
+import "./chunk-UBW3RLKO.js";
+import "./chunk-O6M2HQEC.js";
+import "./chunk-OHS4GIVJ.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -48,6 +48,8 @@ import {
   Version,
   ViewChild,
   ViewEncapsulation,
+  __spreadProps,
+  __spreadValues,
   booleanAttribute,
   inject,
   isSignal,
@@ -81,11 +83,7 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-WZQ4R2LF.js";
-import {
-  __spreadProps,
-  __spreadValues
-} from "./chunk-GOMI4DH3.js";
+} from "./chunk-HQJLPZEQ.js";
 
 // node_modules/@angular/material/fesm2022/_pseudo-checkbox-chunk.mjs
 var MatPseudoCheckbox = class _MatPseudoCheckbox {

@@ -32,7 +32,8 @@ client = MongoClient(
 )
 
 db = client["studenttracker"]
-
+print("DATABASES:", client.list_database_names())
+print("COLLECTIONS:", db.list_collection_names())
 tasks = list(
     db["tasks"].find()
 )

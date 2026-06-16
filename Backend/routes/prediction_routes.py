@@ -1,5 +1,5 @@
 import os
-
+import subprocess
 from flask import Blueprint, jsonify
 from pymongo import MongoClient
 from db import db
@@ -12,7 +12,27 @@ prediction_bp = Blueprint(
     '/predict-performance/<user_id>',
     methods=['GET']
 )
+def subject_performance():
 
+    try:
+
+        result = subprocess.check_output(
+            [
+                'python',
+                'ml/predict/predict_subject.py'
+            ]
+        )
+
+        return jsonify({
+            "result":
+            result.decode('utf-8')
+        })
+
+    except Exception as e:
+
+        return jsonify({
+            "error": str(e)
+        }), 500
 def predict_performance(user_id):
 
     client = MongoClient(

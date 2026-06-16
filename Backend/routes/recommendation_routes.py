@@ -15,6 +15,27 @@ def recommend_tasks():
     try:
 
         result = subprocess.check_output(
+            [
+                'python',
+                'ml/predict/predict_recommendation.py'
+            ]
+        )
+
+        return jsonify({
+            "result":
+            result.decode('utf-8')
+        })
+
+    except Exception as e:
+
+        return jsonify({
+            "error": str(e)
+        }), 500
+def recommend_tasks():
+
+    try:
+
+        result = subprocess.check_output(
             ['python',
              'ml/predict/predict_recommendation.py'],
             stderr=subprocess.STDOUT

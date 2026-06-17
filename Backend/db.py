@@ -5,7 +5,7 @@ from pymongo import MongoClient
 client = MongoClient(os.environ["MONGO_URI"])
 
 # Database
-db = client["studenttracker"]
+db = client["test"]
 
 # Collections
 tasks_collection = db["tasks"]

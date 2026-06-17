@@ -21,7 +21,7 @@ client = MongoClient(
     os.environ["MONGO_URI"]
 )
 
-db = client["studenttracker"]
+db = client["test"]
 
 tasks_collection = db["tasks"]
 

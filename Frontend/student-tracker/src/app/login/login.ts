@@ -94,8 +94,8 @@ login() {
 
 fillDemo() {
   this.loginForm.patchValue({
-    email: 'demo@studenttracker.com',
-    password: 'Demo@123'
+    email: 'pintu.jadav40@gmail.com',
+    password: 'pintu40'
   });
 }
 

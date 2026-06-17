@@ -8,34 +8,55 @@
 
   <div class="auth-card" *ngIf="!loginSuccess">
 
-    <h2>Welcome Back</h2>
-    <p class="subtitle">Login to your account</p>
+  <div class="login-icon">
+    🎓
+  </div>
 
-    <!-- Demo Account -->
-    <div class="demo-box">
-      <h4>Demo Recruiter Account</h4>
-      <p><strong>Email:</strong> dhanunawale40@gmail.com </p>
-      <p><strong>Password:</strong> dhanu@40</p>
-    </div>
+  <h2>Welcome Back</h2>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <p class="subtitle">
+    Sign in to continue tracking your academic performance and AI-powered insights.
+  </p>
 
-      <input
-        type="email"
-        placeholder="demo@studenttracker.com"
-        formControlName="email">
+  <div class="demo-box">
+  </div>
 
-      <input
-        type="password"
-        placeholder="Demo@123"
-        formControlName="password">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-      <button type="submit" [disabled]="isLoading">
-        {{ isLoading ? 'Logging in...' : 'Login' }}
-      </button>
+  <input
+    type="email"
+    placeholder="Enter Email"
+    formControlName="email">
 
-    </form>
+  <input
+    type="password"
+    placeholder="Enter Password"
+    formControlName="password">
+
+  <div class="button-group">
+
+    <button
+      type="button"
+      class="demo-btn"
+      (click)="fillDemo()">
+
+      Demo Account
+
+    </button>
+
+    <button
+      type="submit"
+      class="login-btn"
+      [disabled]="isLoading">
+
+      {{ isLoading ? 'Logging in...' : 'Login' }}
+
+    </button>
 
   </div>
+
+</form>
+
+</div>
 
 </div>
